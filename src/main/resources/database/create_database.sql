@@ -25,7 +25,7 @@ create table trade_card
 	terms_contract varchar, 
 	title varchar not null, 
 	stage varchar not null,
-    company_id integer REFERENCES company (id)
+    company_id integer REFERENCES company (id) NOT NULL
 );
 create table product_item 
 (
