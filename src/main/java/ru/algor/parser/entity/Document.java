@@ -1,5 +1,6 @@
 package ru.algor.parser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
@@ -24,7 +26,7 @@ public class Document {
     private String link;
 
     private String description;
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trade_card_id")
     private TradeCard tradeCard;

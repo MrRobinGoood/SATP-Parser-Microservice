@@ -1,5 +1,6 @@
 package ru.algor.parser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class TradeCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "web_link", nullable = false)
@@ -49,7 +51,9 @@ public class TradeCard {
 
     private Boolean inFavorites = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    private String termsContract;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
 
@@ -59,6 +63,5 @@ public class TradeCard {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "tradeCard")
     private List<Document> documents;
 
-    private String termsContract;
 
 }

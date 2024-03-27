@@ -1,5 +1,6 @@
 package ru.algor.parser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,7 @@ public class ProductItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.PRIVATE)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
@@ -27,7 +29,7 @@ public class ProductItem {
     private String description;
 
     private String deliveryAddress;
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trade_card_id")
     private TradeCard tradeCard;

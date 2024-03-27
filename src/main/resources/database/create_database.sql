@@ -1,8 +1,8 @@
 create table company 
 (
 	id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-	number_inn integer, 
-	number_kpp integer, 
+	number_inn varchar,
+	number_kpp varchar,
 	business_address varchar, 
 	full_name varchar, 
 	web_link varchar, 
@@ -24,7 +24,8 @@ create table trade_card
 	status varchar not null, 
 	terms_contract varchar, 
 	title varchar not null, 
-	stage varchar not null
+	stage varchar not null,
+    company_id integer REFERENCES company (id)
 );
 create table product_item 
 (
