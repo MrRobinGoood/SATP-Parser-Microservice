@@ -21,4 +21,8 @@ public class TradeCardService {
         return tradeCardRepository.findAll();
     }
 
+    public void saveTradeCards(List<TradeCard> tradeCards) {
+        tradeCardRepository.saveAll(tradeCards);
+    }
+
 }
